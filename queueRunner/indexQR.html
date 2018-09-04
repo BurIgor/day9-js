@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Testing Queue Runner</title>
+    <script src="queueRunner.js"></script>
+</head>
+<body>
+    <div id="bttn"><input type="button" onclick="test()" value="Test Queue Runner"></div>
+    <p>Start some tasks. <br>Lock execution of single task at one time. </p>
+    <div id="pause"><input type="button" name="pause" onclick="qpause()" value="Pause"></div>
+    <div id="resume"><input type="button" name="resume" onclick="qresume()" value="Resume"></div>
+    <div id="clear"><input type="button" name="clear" onclick="qclear()" value="Clear"></div>
+    <script>
+     var qr = new QueueRunner(outExecute, onFinish);
+        function test() {                                 	
+			console.log("Start test."); 
+            for (var i = 1; i < 9; i++) {
+                qr.push("Task" + i);
+            }            
+            console.log("Finish test.");
+        }
+        function qpause() {
+            console.log("Pause");
+            qr.pause();
+        }
+        function qresume() {
+            console.log("Resume");
+            qr.resume();
+        }
+        function qclear() {
+            console.log("Clear");
+            qr.clear();
+        }
+    </script>
+</body>
+</html>
